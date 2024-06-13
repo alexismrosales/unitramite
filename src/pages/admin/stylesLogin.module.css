@@ -1,0 +1,21 @@
+.container {
+  @apply w-screen bg-gray-100 h-[36rem] grid grid-cols-2
+}
+
+.subtitle {
+  @apply text-black text-4xl font-bold pb-2;
+  font-family: "Montserrat", sans-serif;
+}
+
+.description {
+  @apply text-lg text-center mb-10 w-4/5
+}
+
+.inputs {
+  @apply mb-7 p-2 w-4/5 border-2 border-gray-200
+}
+
+.submit {
+  @apply p-2 bg-cadet-gray text-center text-lg text-white;
+  font-family: "Montserrat", sans-serif;
+}

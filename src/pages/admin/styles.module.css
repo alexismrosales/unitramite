@@ -1,0 +1,16 @@
+.container {
+  @apply h-full w-full bg-gray-100 mt-64 flex flex-row items-center justify-center
+}
+
+.title {
+  @apply text-6xl font-bold;
+  font-family: "Montserrat", sans-serif;
+}
+
+.name {
+  @apply text-cadet-gray text-7xl
+}
+
+.cards {
+  @apply grid grid-cols-2 px-20
+}

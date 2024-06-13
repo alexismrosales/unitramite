@@ -1,0 +1,8 @@
+.card {
+  @apply flex items-center
+}
+
+.title {
+  @apply text-center text-4xl my-10 font-medium hover:text-cadet-gray;
+  font-family: "Montserrat", sans-serif;
+}

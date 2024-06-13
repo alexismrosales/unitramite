@@ -1,0 +1,33 @@
+.title {
+  @apply font-bold text-4xl text-center py-4;
+  font-family: "Ubuntu", sans-serif;
+  font-style: normal;
+}
+
+.title1 {
+  @apply text-slate-500;
+}
+
+.title2 {
+  @apply text-blue-marine italic;
+}
+
+.title3 {
+  @apply text-blue-500
+}
+
+.imageHolder {
+  @apply h-auto w-full flex items-center justify-center my-10
+}
+
+.introduction {
+  @apply h-64 mx-56 bg-slate-400 rounded-2xl
+}
+
+.text {
+  @apply text-center text-black mx-56
+}
+
+.buttons {
+  @apply bg-blue-marine text-center h-auto w-auto px-3 py-2 text-white
+}
