@@ -9,7 +9,8 @@ public class AdminMapper {
                 admin.getId(),
                 admin.getRole(),
                 admin.getUsername(),
-                admin.getPassword()
+                admin.getPassword(),
+                admin.getToken()
         );
     }
 
@@ -18,7 +19,8 @@ public class AdminMapper {
                 adminDto.getId(),
                 adminDto.getRole(),
                 adminDto.getUsername(),
-                adminDto.getPassword()
+                adminDto.getPassword(),
+                adminDto.getToken()
         );
     }
 }

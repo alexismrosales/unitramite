@@ -6,6 +6,8 @@ import com.unitramite.unitramite.mapper.AdminMapper;
 import com.unitramite.unitramite.repository.AdminRepository;
 import com.unitramite.unitramite.service.IAdminService;
 import com.unitramite.unitramite.utils.JwtUtil;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +26,8 @@ public class AdminService implements IAdminService {
 
     // Verificación del usuario
     @Override
-    public AdminDto getAdmin(AdminDto adminDto){
-        Admin admin  = adminRepository.findByUsernameAndPassword(adminDto.getUsername(), adminDto.getPassword());
+    public AdminDto getAdmin(String username, String password){
+        Admin admin  = adminRepository.findByUsernameAndPassword(username, password);
         // Si hay match generaremos el token
         if(admin == null){
           return null;
@@ -33,5 +35,10 @@ public class AdminService implements IAdminService {
         String token = jwtUtil.generateToken(admin.getUsername());
         admin.setToken(token);
         return AdminMapper.mapToAdminDto(admin);
+    }
+
+    @Override
+    public Boolean validateToken(String token){
+        return jwtUtil.validateToken(token);
     }
 }

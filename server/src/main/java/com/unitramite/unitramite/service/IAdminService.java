@@ -4,5 +4,9 @@ import com.unitramite.unitramite.dto.AdminDto;
 
 public interface IAdminService {
     AdminDto createAdmin(AdminDto adminDto);
-    AdminDto getAdmin(AdminDto adminDto);
+
+    // Verificación del usuario
+    AdminDto getAdmin(String username, String password);
+
+    Boolean validateToken(String token);
 }
