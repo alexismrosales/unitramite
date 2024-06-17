@@ -4,18 +4,20 @@ import { handleValidateCredentials } from "../../services/admin";
 import style from "./stylesLogin.module.css"
 
 const Login = props => {
+  const navigate = useNavigate();
   // Hooks de los datos
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [notValid, setNotValid] = useState(false);
+  const [adminItem, setAdminItem] = useState(null);
 
   // Inputs
   const handleInputUsername = (e) => setUsername(e.target.value);
   const handleInputPassword = (e) => setPassword(e.target.value);
 
   // Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // En caso que alguno de los campos estén vacio
     if (!username.trim() || !password.trim()) {
@@ -23,17 +25,28 @@ const Login = props => {
       setNotValid(false);
     }
     else {
-      isValid = submitLogin(username, password);
-      if (!isValid) {
+      // Sino obtenemos los datos del usuario
+      const adminData = await handleValidateCredentials(username, password);
+      if (adminData) {
+        setAdminItem(adminData);
+      } else {
         setNotValid(true);
         setError(false);
       }
     }
   }
-  // Tipo de usuario
+
+
   useEffect(() => {
-    props.setAdmin(false);
-  }, []);
+    if (adminItem) {
+      // Almacenamos el administrador INCLUYENDO el token
+      sessionStorage.setItem("adminData", adminItem);
+      // 
+      props.onLogin();
+      // Redireccionamos
+      navigate("/admin");
+    }
+  })
 
 
   return (
@@ -57,25 +70,5 @@ const Login = props => {
     </div>
   )
 }
-
-const redirect = async () => {
-  const navigate = useNavigate();
-  navigate({
-    pathname: "/admin"
-  })
-}
-
-const submitLogin = async (username, password) => {
-  adminItem = await handleValidateCredentials(username, password);
-  // Si es null, sabemos que no fue valido
-  if (adminItem == null) {
-    return false;
-  }
-  // Almacenamos el administrador INCLUYENDO el token
-  sessionStorage.setItem(adminItem);
-  // Redireccionamos a la pagina principal de administrador
-  redirect();
-}
-
 
 export default Login

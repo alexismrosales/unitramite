@@ -32,7 +32,7 @@ public class AdminController {
         if (savedAdmin == null) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
-        return new ResponseEntity<>(savedAdmin, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(savedAdmin, HttpStatus.OK);
     }
 
     @PostMapping("/validateToken")

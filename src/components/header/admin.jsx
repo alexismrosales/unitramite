@@ -1,7 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import style from "./styles.module.css"
 
 const AdminHeader = props => {
-  console.log(props.isAdmin)
+  const navigate = useNavigate();
+  const onClickSession = () => {
+    // Borramos los datos de la sesión
+    sessionStorage.removeItem("adminData");
+    // Cambiamos el estado
+    props.onLogout();
+    // Redireccionamos al login
+    navigate("/admin/login");
+  }
+
   return (
     <nav className={style.container}>
       <a className={style.title}>
@@ -12,16 +22,12 @@ const AdminHeader = props => {
       </a>
       <div className={style.navbarMenu}>
         <ul className={style.ul}>
-          {props.isAdmin ? null : (
-            <>
-              <li className>
-                <a className="font-medium">Inicio</a>
-              </li>
-              <li>
-                <a className="font-medium">Cerrar sesión</a>
-              </li>
-            </>
-          )}
+          <li className>
+            <a className="font-medium">Inicio</a>
+          </li>
+          <li>
+            <button type="button" onClick={onClickSession} className="font-medium">Cerrar sesión</button>
+          </li>
         </ul>
       </div>
     </nav>

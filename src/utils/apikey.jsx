@@ -1,1 +1,1 @@
-export const apiKey = "localhost:8080/api";
+export const apiKey = "http://localhost:8080/api";
