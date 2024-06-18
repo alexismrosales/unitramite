@@ -1,0 +1,19 @@
+.form {
+  font-family: "Montserrat", sans-serif;
+}
+
+.input {
+  @apply w-full py-3 my-4 border-2 border-gray-300
+}
+
+.card {
+  @apply w-full h-full border-2 border-gray-400 px-10 space-y-4 py-3 mb-5
+}
+
+.cardTitle {
+  @apply grid grid-cols-2 items-center font-medium
+}
+
+.button {
+  @apply p-3 text-white bg-cadet-gray text-sm
+}

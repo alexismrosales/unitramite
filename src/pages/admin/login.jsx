@@ -40,11 +40,11 @@ const Login = props => {
   useEffect(() => {
     if (adminItem) {
       // Almacenamos el administrador INCLUYENDO el token
-      sessionStorage.setItem("adminData", adminItem);
+      sessionStorage.setItem("adminData", JSON.stringify(adminItem.data));
       // 
       props.onLogin();
       // Redireccionamos
-      navigate("/admin");
+      //navigate("/admin");
     }
   })
 

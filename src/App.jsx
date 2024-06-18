@@ -7,6 +7,7 @@ import AdminHeader from './components/header/admin';
 import Login from './pages/admin/login';
 import NotFound from './pages/notfound';
 import AdminHomePage from './pages/admin';
+import CreateProcess from './pages/admin/createProcess';
 
 function App() {
   // Verificamos si esta logueado
@@ -30,19 +31,22 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App flex flex-col h-screen relative">
       <BrowserRouter>
         {isLoggedIn ?
           (<AdminHeader onLogout={handleLogout} />)
           :
           (<Header />)
         }
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/admin/login" element={isLoggedIn ? <AdminHomePage /> : <Login onLogin={handleLogin} />} />
-          <Route path="/admin" element={isLoggedIn ? <AdminHomePage /> : <NotFound />} />
-          <Route path="/notfound" element={<NotFound />} />
-        </Routes>
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/admin/login" element={isLoggedIn ? <AdminHomePage /> : <Login onLogin={handleLogin} />} />
+            <Route path="/admin" element={isLoggedIn ? <AdminHomePage /> : <NotFound />} />
+            <Route path="/admin/crearTramite" element={isLoggedIn ? <CreateProcess /> : <NotFound />} />
+            <Route path="/notfound" element={<NotFound />} />
+          </Routes>
+        </div>
         <Footer />
       </BrowserRouter>
     </div>
